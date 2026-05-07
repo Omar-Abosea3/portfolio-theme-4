@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ManPower Solutions – B2B Workforce & HR Services</title>
+    <meta name="description"
+        content="Professional manpower supply, outsourcing, payroll management, and HR consulting for industrial companies, contractors, and large enterprises." />
+    <meta name="keywords"
+        content="manpower supply, HR outsourcing, payroll management, workforce solutions, B2B staffing, contract staffing" />
+    <meta property="og:title" content="ManPower Solutions – B2B Workforce & HR Services" />
+    <meta property="og:description" content="Trusted workforce partner for industry leaders." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&family=Changa:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style id="dynamic-color-styles">
+        @layer base {
+            :root {
+                --palette-primary: #1E3A8A;
+                --palette-secondary: #F59E0B;
+                --background-default: #F8FAFC;
+                --background-paper: #FFFFFF;
+                --text-primary: #0F172A;
+                --text-secondary: #64748B;
+                --text-tertiary: #FFFFFF;
+                --borders-main: #E2E8F0;
+            }
+
+            :dir(ltr) {
+                font-family: 'Lexend Deca', system-ui, sans-serif;
+            }
+
+            :dir(rtl) {
+                font-family: 'Changa', system-ui, sans-serif;
+            }
+        }
+
+        .bg-cp_palette_primary {
+            background-color: var(--palette-primary) !important;
+        }
+
+        .bg-cp_palette_secondary {
+            background-color: var(--palette-secondary) !important;
+        }
+
+        .bg-cp_background_default {
+            background-color: var(--background-default) !important;
+        }
+
+        .bg-cp_background_paper {
+            background-color: var(--background-paper) !important;
+        }
+
+        .text-cp_text_primary {
+            color: var(--text-primary) !important;
+        }
+
+        .text-cp_text_secondary {
+            color: var(--text-secondary) !important;
+        }
+
+        .text-cp_text_tertiary {
+            color: var(--text-tertiary) !important;
+        }
+
+        .border-cp_borders_main {
+            border-color: var(--borders-main) !important;
+        }
+
+        .hover\:bg-cp_palette_primary:hover {
+            background-color: var(--palette-primary) !important;
+        }
+
+        .hover\:bg-cp_palette_secondary:hover {
+            background-color: var(--palette-secondary) !important;
+        }
+
+        .hover\:text-cp_text_primary:hover {
+            color: var(--text-primary) !important;
+        }
+
+        .hover\:text-cp_text_secondary:hover {
+            color: var(--text-secondary) !important;
+        }
+
+        .hover\:text-cp_text_tertiary:hover {
+            color: var(--text-tertiary) !important;
+        }
+
+        .hover\:border-cp_borders_main:hover {
+            border-color: var(--borders-main) !important;
+        }
+
+        .text-cp_palette_primary {
+            color: var(--palette-primary) !important;
+        }
+
+        .border-cp_palette_primary {
+            border-color: var(--palette-primary) !important;
+        }
+
+        .hover\:text-cp_palette_primary:hover {
+            color: var(--palette-primary) !important;
+        }
+
+        .focus\:border-cp_palette_primary:focus {
+            border-color: var(--palette-primary) !important;
+        }
+    </style>
+</head>
+
+<body class="bg-cp_background_default text-cp_text_primary h-[100vh] overflow-x-hidden overflow-y-auto">
+    <!-- NAVBAR -->
+    <header class="sticky start-0 end-0 top-0">
+        <nav
+            class="bg-cp_background_paper px-6 md:px-12 lg:px-24 xl:px-40 py-4 flex items-center justify-between relative">
+            <!-- Logo placeholder -->
+            <a href="https://prebuiltui.com">
+                <img src="https://placehold.co/151x36/1E3A8A/FFFFFF?text=LOGO" alt="Logo" class="w-[151px] h-[36px]">
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <div
+                class="hidden md:flex items-center bg-cp_background_default border border-cp_borders_main rounded-full px-1 py-1 gap-2">
+                <a href="index.html"
+                    class="px-4 py-1.5 rounded-full text-sm transition-colors bg-cp_background_paper border border-cp_borders_main font-medium text-cp_text_primary hover:text-cp_palette_primary">
+                    <span>Home</span>
+                </a>
+                <a href="about.html"
+                    class="px-4 py-1.5 rounded-full text-sm transition-colors text-cp_text_secondary hover:text-cp_palette_primary">
+                    <span>About</span>
+                </a>
+                <a href="services.html"
+                    class="px-4 py-1.5 rounded-full text-sm transition-colors text-cp_text_secondary hover:text-cp_palette_primary">
+                    <span>Services</span>
+                </a>
+                <a href="blogs.html"
+                    class="px-4 py-1.5 rounded-full text-sm transition-colors text-cp_text_secondary hover:text-cp_palette_primary">
+                    <span>Blogs</span>
+                </a>
+                <a href="testimonials.html"
+                    class="px-4 py-1.5 rounded-full text-sm transition-colors text-cp_text_secondary hover:text-cp_palette_primary">
+                    <span>Testimonials</span>
+                </a>
+            </div>
+
+            <!-- Desktop CTA Button -->
+            <a href="contact.html"
+                class="hidden md:flex items-center gap-2.5 bg-cp_palette_primary text-cp_text_tertiary hover:bg-cp_palette_secondary text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0 transition-colors">
+                <span>Get started</span>
+                <span class="w-7 h-7 rounded-full bg-cp_background_paper flex items-center justify-center">
+                    <!-- Icon placeholder -->
+                    <img src="https://placehold.co/12x10/FFFFFF/1E3A8A?text=→" alt="arrow" class="w-3 h-2.5">
+                </span>
+            </a>
+
+            <!-- Mobile Hamburger -->
+            <button id="hamburger" onclick="toggleMenu()"
+                class="md:hidden flex flex-col gap-1.5 cursor-pointer bg-transparent border-0 p-1">
+                <span id="bar1" class="block w-6 h-0.5 bg-cp_palette_primary transition-transform"></span>
+                <span id="bar2" class="block w-6 h-0.5 bg-cp_palette_primary transition-opacity"></span>
+                <span id="bar3" class="block w-6 h-0.5 bg-cp_palette_primary transition-transform"></span>
+            </button>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu"
+                class="hidden absolute top-full left-0 w-full bg-cp_background_paper border-t border-cp_borders_main flex-col p-5 gap-1 md:hidden z-50">
+                <a href="index.html"
+                    class="block px-4 py-2.5 rounded-lg text-sm bg-cp_background_default font-medium text-cp_text_primary">
+                    <span>Home</span>
+                </a>
+                <a href="about.html"
+                    class="block px-4 py-2.5 rounded-lg text-sm text-cp_text_secondary hover:bg-cp_background_default">
+                    <span>About</span>
+                </a>
+                <a href="services.html"
+                    class="block px-4 py-2.5 rounded-lg text-sm text-cp_text_secondary hover:bg-cp_background_default">
+                    <span>Services</span>
+                </a>
+                <a href="blogs.html"
+                    class="block px-4 py-2.5 rounded-lg text-sm text-cp_text_secondary hover:bg-cp_background_default">
+                    <span>Blogs</span>
+                </a>
+                <a href="testimonials.html"
+                    class="block px-4 py-2.5 rounded-lg text-sm text-cp_text_secondary hover:bg-cp_background_default">
+                    <span>Testimonials</span>
+                </a>
+
+                <a href="contact.html"
+                    class="flex items-center justify-center gap-2.5 bg-cp_palette_primary text-cp_text_tertiary text-sm font-medium px-5 py-2.5 rounded-full cursor-pointer border-0 mt-3 w-fit">
+                    <span>Get started</span>
+                    <span class="w-7 h-7 rounded-full bg-cp_background_paper flex items-center justify-center ml-2">
+                        <img src="https://placehold.co/12x10/FFFFFF/1E3A8A?text=→" alt="arrow" class="w-3 h-2.5">
+                    </span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <main>
+        <!-- hero section -->
+
+        <section class="bg-cp_background_default">
+            <div class="container px-6 py-16 mx-auto">
+                <div class="items-center lg:flex">
+
+                    <!-- Text Column -->
+                    <div class="w-full lg:w-1/2">
+                        <div class="lg:max-w-lg">
+                            <!-- الـ H1 و الـ P نصوص صريحة مش محتاجة span إضافي حسب طلبك -->
+                            <h1 class="text-3xl font-semibold text-cp_text_primary lg:text-4xl">
+                                We build powerful <br>
+                                <span class="text-cp_palette_primary">digital experiences</span>
+                            </h1>
+
+                            <p class="mt-3 text-cp_text_secondary">
+                                We help businesses grow through modern design, scalable solutions, and high-quality
+                                development tailored to your needs.
+                            </p>
+
+                            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+
+                                <!-- Primary Button -->
+                                <a href="contact.html" class="px-5 py-2 text-sm tracking-wide rounded-lg 
+                            bg-cp_palette_primary text-cp_text_tertiary 
+                            hover:bg-cp_palette_secondary transition text-center">
+                                    <!-- تغليف النص بـ span -->
+                                    <span>Get Started</span>
+                                </a>
+
+                                <!-- Secondary Button -->
+                                <a href="portfolio.html" class="px-5 py-2 text-sm tracking-wide rounded-lg 
+                            border border-cp_borders_main 
+                            text-cp_text_primary 
+                            hover:border-cp_palette_primary hover:text-cp_palette_primary transition text-center">
+                                    <!-- تغليف النص بـ span -->
+                                    <span>View Portfolio</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Column -->
+                    <div class="flex items-center justify-center w-full mt-8 lg:mt-0 lg:w-1/2">
+                        <!-- استخدام Image Placeholder بألوان السيستم بتاعك -->
+                        <img class="w-full h-full lg:max-w-3xl"
+                            src="https://placehold.co/600x400/1E3A8A/FFFFFF?text=Digital+Experience" alt="hero image">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- features -->
+        <section class="bg-cp_background_default">
+            <div class="container px-6 py-10 mx-auto">
+
+                <!-- Heading - تم تقسيم النصوص داخل spans منفصلة -->
+                <h1 class="text-2xl font-semibold text-cp_text_primary capitalize lg:text-3xl">
+                    <span>Explore our</span>
+                    <br>
+                    <span>professional</span>
+                    <span class="underline decoration-cp_palette_primary">services</span>
+                </h1>
+
+                <p class="mt-4 text-cp_text_secondary xl:mt-6">
+                    <span>We deliver high-quality digital solutions designed to help your business grow, scale, and
+                        stand out in the market.</span>
+                </p>
+
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
+
+                    <!-- Card 1 -->
+                    <div
+                        class="p-8 space-y-3 bg-cp_background_paper border border-cp_borders_main rounded-xl hover:border-cp_palette_primary transition">
+                        <img src="https://placehold.co/32x32/1E3A8A/FFFFFF?text=Web" class="w-8 h-8" alt="service icon">
+
+                        <h2 class="text-xl font-semibold text-cp_text_primary capitalize">
+                            <span>Web Development</span>
+                        </h2>
+
+                        <p class="text-cp_text_secondary">
+                            <span>We build fast, scalable, and modern websites tailored to your business needs using the
+                                latest technologies.</span>
+                        </p>
+
+                        <a href="services.html"
+                            class="inline-flex items-center gap-2 text-cp_palette_primary hover:underline">
+                            <span>Learn more</span>
+                            <img src="https://placehold.co/20x20/1E3A8A/FFFFFF?text=→" class="w-5 h-5" alt="arrow">
+                        </a>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="p-8 space-y-3 bg-cp_background_paper border border-cp_borders_main rounded-xl hover:border-cp_palette_primary transition">
+                        <img src="https://placehold.co/32x32/1E3A8A/FFFFFF?text=UI" class="w-8 h-8" alt="service icon">
+
+                        <h2 class="text-xl font-semibold text-cp_text_primary capitalize">
+                            <span>UI/UX Design</span>
+                        </h2>
+
+                        <p class="text-cp_text_secondary">
+                            <span>Creating clean, intuitive, and engaging user experiences that improve usability and
+                                boost customer satisfaction.</span>
+                        </p>
+
+                        <a href="services.html"
+                            class="inline-flex items-center gap-2 text-cp_palette_primary hover:underline">
+                            <span>Learn more</span>
+                            <img src="https://placehold.co/20x20/1E3A8A/FFFFFF?text=→" class="w-5 h-5" alt="arrow">
+                        </a>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="p-8 space-y-3 bg-cp_background_paper border border-cp_borders_main rounded-xl hover:border-cp_palette_primary transition">
+                        <img src="https://placehold.co/32x32/1E3A8A/FFFFFF?text=Mkt" class="w-8 h-8" alt="service icon">
+
+                        <h2 class="text-xl font-semibold text-cp_text_primary capitalize">
+                            <span>Digital Marketing</span>
+                        </h2>
+
+                        <p class="text-cp_text_secondary">
+                            <span>Grow your brand with data-driven marketing strategies including SEO, ads, and social
+                                media campaign.</span>
+                        </p>
+
+                        <a href="services.html"
+                            class="inline-flex items-center gap-2 text-cp_palette_primary hover:underline">
+                            <span>Learn more</span>
+                            <img src="https://placehold.co/20x20/1E3A8A/FFFFFF?text=→" class="w-5 h-5" alt="arrow">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- testimonials -->
+        <section class="bg-cp_background_default">
+            <div class="container px-6 py-10 mx-auto">
+
+                <!-- Heading -->
+                <h1 class="text-2xl font-semibold text-center text-cp_text_primary capitalize lg:text-3xl">
+                    <span>What our</span>
+                    <span class="text-cp_palette_primary">clients</span>
+                    <span>say</span>
+                </h1>
+
+                <p class="max-w-2xl mx-auto mt-6 text-center text-cp_text_secondary">
+                    <span>Hear from our satisfied clients who trusted us to deliver high-quality solutions and
+                        exceptional results.</span>
+                </p>
+
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 lg:grid-cols-2 xl:grid-cols-3">
+
+                    <!-- Card 1 -->
+                    <div
+                        class="p-8 bg-cp_background_paper border border-cp_borders_main rounded-lg hover:border-cp_palette_primary transition">
+                        <p class="leading-loose text-cp_text_secondary">
+                            <span>“Working with this team was a game changer. They delivered a fast, scalable product
+                                that exceeded our expectations.”</span>
+                        </p>
+
+                        <div class="flex items-center mt-8 -mx-2">
+                            <img class="object-cover mx-2 rounded-full w-14 h-14 shrink-0 border-2 border-cp_borders_main"
+                                src="https://placehold.co/100x100/1E3A8A/FFFFFF?text=Client" alt="client">
+
+                            <div class="mx-2">
+                                <h2 class="font-semibold text-cp_text_primary">
+                                    <span>Robert</span>
+                                </h2>
+                                <span class="text-sm text-cp_text_secondary">
+                                    <span>CTO, Tech Solutions</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="p-8 bg-cp_background_paper border border-cp_borders_main rounded-lg hover:border-cp_palette_primary transition">
+                        <p class="leading-loose text-cp_text_secondary">
+                            <span>“Amazing design and smooth user experience. Our customers noticed the difference
+                                immediately.”</span>
+                        </p>
+
+                        <div class="flex items-center mt-8 -mx-2">
+                            <img class="object-cover mx-2 rounded-full w-14 h-14 shrink-0 border-2 border-cp_borders_main"
+                                src="https://placehold.co/100x100/1E3A8A/FFFFFF?text=Client" alt="client">
+
+                            <div class="mx-2">
+                                <h2 class="font-semibold text-cp_text_primary">
+                                    <span>Jenny Doe</span>
+                                </h2>
+                                <span class="text-sm text-cp_text_secondary">
+                                    <span>CEO, Creative Agency</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="p-8 bg-cp_background_paper border border-cp_borders_main rounded-lg hover:border-cp_palette_primary transition">
+                        <p class="leading-loose text-cp_text_secondary">
+                            <span>“Professional team, great communication, and outstanding results. Highly
+                                recommended.”</span>
+                        </p>
+
+                        <div class="flex items-center mt-8 -mx-2">
+                            <img class="object-cover mx-2 rounded-full w-14 h-14 shrink-0 border-2 border-cp_borders_main"
+                                src="https://placehold.co/100x100/1E3A8A/FFFFFF?text=Client" alt="client">
+
+                            <div class="mx-2">
+                                <h2 class="font-semibold text-cp_text_primary">
+                                    <span>Emma Watson</span>
+                                </h2>
+                                <span class="text-sm text-cp_text_secondary">
+                                    <span>Marketing Manager</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- cta -->
+        <section class="bg-cp_background_default lg:py-16 lg:px-0 px-6 lg:flex lg:justify-center">
+            <div
+                class="overflow-hidden bg-cp_background_paper border border-cp_borders_main lg:mx-8 lg:flex lg:items-center lg:max-w-6xl lg:w-full lg:shadow-md lg:rounded-xl rounded-md">
+
+                <!-- Image -->
+                <div class="lg:w-1/2">
+                    <img src="https://placehold.co/800x600/1E3A8A/FFFFFF?text=Build+Your+Idea"
+                        class="w-full h-64 lg:h-full object-cover" alt="cta image" />
+                </div>
+
+                <!-- Content -->
+                <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
+
+                    <!-- Heading Divided into Spans -->
+                    <h2 class="text-2xl font-semibold text-cp_text_primary md:text-3xl">
+                        <span>Build your next</span>
+                        <span class="text-cp_palette_primary">big idea</span>
+                    </h2>
+
+                    <p class="mt-4 text-cp_text_secondary">
+                        <span>We help businesses turn ideas into powerful digital Home through modern design, scalable
+                            architecture, and clean development.</span>
+                    </p>
+
+                    <!-- Buttons with Wrapped Spans -->
+                    <div class="flex flex-col sm:flex-row gap-3 mt-6">
+
+                        <!-- Primary CTA -->
+                        <a href="contact.html" class="inline-flex items-center justify-center px-6 py-2 text-sm rounded-lg
+                    bg-cp_palette_primary text-cp_text_tertiary
+                    hover:bg-cp_palette_secondary transition text-center">
+                            <span>Start Now</span>
+                        </a>
+
+                        <!-- Secondary CTA -->
+                        <a href="portfolio.html" class="inline-flex items-center justify-center px-6 py-2 text-sm rounded-lg
+                    border border-cp_borders_main text-cp_text_primary
+                    hover:border-cp_palette_primary hover:text-cp_palette_primary transition text-center">
+                            <span>View Work</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-cp_background_default border-t border-cp_borders_main">
+        <div class="container px-6 py-10 mx-auto">
+
+            <!-- Top Section -->
+            <div class="flex flex-col items-center text-center">
+
+                <!-- Logo -->
+                <a href="#">
+                    <img class="w-auto h-7" src="https://placehold.co/120x40/1E3A8A/FFFFFF?text=LOGO" alt="logo">
+                </a>
+
+                <!-- Links - تم تغليف كل نص داخل span مستقل -->
+                <div class="flex flex-wrap justify-center mt-6 -mx-4">
+
+                    <a href="index.html"
+                        class="mx-4 text-sm text-cp_text_secondary hover:text-cp_palette_primary transition">
+                        <span>Home</span>
+                    </a>
+
+                    <a href="portfolio.html"
+                        class="mx-4 text-sm text-cp_text_secondary hover:text-cp_palette_primary transition">
+                        <span>Portfolio</span>
+                    </a>
+
+                    <a href="services.html"
+                        class="mx-4 text-sm text-cp_text_secondary hover:text-cp_palette_primary transition">
+                        <span>Services</span>
+                    </a>
+
+                    <a href="ecommerce.html"
+                        class="mx-4 text-sm text-cp_text_secondary hover:text-cp_palette_primary transition">
+                        <span>Shop</span>
+                    </a>
+
+                    <a href="booking.html"
+                        class="mx-4 text-sm text-cp_text_secondary hover:text-cp_palette_primary transition">
+                        <span>Booking</span>
+                    </a>
+
+                    <a href="contact.html"
+                        class="mx-4 text-sm text-cp_text_secondary hover:text-cp_palette_primary transition">
+                        <span>Contact</span>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <hr class="my-8 border-cp_borders_main" />
+
+            <!-- Bottom Section -->
+            <div class="flex flex-col sm:flex-row items-center justify-between">
+
+                <!-- Copyright Wrapped in Span -->
+                <p class="text-sm text-cp_text_secondary">
+                    <span>© 2026 Your Company. All Rights Reserved.</span>
+                </p>
+
+                <!-- Social Icons -->
+                <div class="flex mt-4 sm:mt-0 space-x-3">
+
+                    <a href="#">
+                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=FB" alt="social icon">
+                    </a>
+
+                    <a href="#">
+                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=TW" alt="social icon">
+                    </a>
+
+                    <a href="#">
+                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=LN" alt="social icon">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let menuOpen = false;
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            const menu = document.getElementById('mobileMenu');
+            const bar1 = document.getElementById('bar1');
+            const bar2 = document.getElementById('bar2');
+            const bar3 = document.getElementById('bar3');
+            if (menuOpen) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                bar1.classList.add('rotate-45', 'translate-y-2');
+                bar2.classList.add('opacity-0');
+                bar3.classList.add('-rotate-45', '-translate-y-2');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                bar1.classList.remove('rotate-45', 'translate-y-2');
+                bar2.classList.remove('opacity-0');
+                bar3.classList.remove('-rotate-45', '-translate-y-2');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
