@@ -136,7 +136,7 @@
                     <span>About</span>
                 </a>
                 <a href="services.html"
-                    class="px-4 py-1.5 rounded-full text-sm transition-colors bg-cp_background_paper border border-cp_borders_main font-medium text-cp_text_primary hover:text-cp_palette_primary">
+                    class="px-4 py-1.5 rounded-full text-sm transition-colors text-cp_text_secondary hover:text-cp_palette_primary">
                     <span>Services</span>
                 </a>
                 <a href="blogs.html"
@@ -144,7 +144,7 @@
                     <span>Blogs</span>
                 </a>
                 <a href="testimonials.html"
-                    class="px-4 py-1.5 rounded-full text-sm transition-colors text-cp_text_secondary hover:text-cp_palette_primary">
+                    class="px-4 py-1.5 rounded-full text-sm transition-colors bg-cp_background_paper border border-cp_borders_main font-medium text-cp_text_primary hover:text-cp_palette_primary">
                     <span>Testimonials</span>
                 </a>
             </div>
@@ -179,7 +179,7 @@
                     <span>About</span>
                 </a>
                 <a href="services.html"
-                    class="block px-4 py-2.5 rounded-lg text-sm bg-cp_background_default font-medium text-cp_text_primary">
+                    class="block px-4 py-2.5 rounded-lg text-sm text-cp_text_secondary hover:bg-cp_background_default">
                     <span>Services</span>
                 </a>
                 <a href="blogs.html"
@@ -187,7 +187,7 @@
                     <span>Blogs</span>
                 </a>
                 <a href="testimonials.html"
-                    class="block px-4 py-2.5 rounded-lg text-sm text-cp_text_secondary hover:bg-cp_background_default">
+                    class="block px-4 py-2.5 rounded-lg text-sm bg-cp_background_default font-medium text-cp_text_primary">
                     <span>Testimonials</span>
                 </a>
 
@@ -204,198 +204,96 @@
 
     <!-- CONTENT -->
     <main>
-        <section class="container px-6 py-16 mx-auto text-center bg-cp_background_default">
+        <style>
+            /* التعديل هنا لضمان استخدام الخط الخاص بك وتحسين أداء الحركة */
+            .animate-scroll-up-1 {
+                animation: scroll-up 25s linear infinite;
+            }
 
-            <div class="max-w-lg mx-auto">
+            .animate-scroll-up-2 {
+                animation: scroll-up 30s linear infinite;
+            }
 
-                <!-- Heading Divided into Spans -->
-                <h1 class="text-3xl font-semibold text-cp_text_primary lg:text-4xl">
-                    <span>Building Your Next App</span>
-                    <span>with our</span>
-                    <span class="text-cp_palette_primary">Awesome components</span>
-                </h1>
+            .animate-scroll-up-3 {
+                animation: scroll-up 20s linear infinite;
+            }
 
-                <p class="mt-6 text-cp_text_secondary">
-                    <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero similique obcaecati illum
-                        mollitia.</span>
-                </p>
+            @keyframes scroll-up {
+                0% {
+                    transform: translateY(0);
+                }
 
-                <!-- Button with Wrapped Span -->
-                <button class="px-5 py-2 mt-6 text-sm font-medium leading-5 rounded-lg capitalize
-            bg-cp_palette_primary text-cp_text_tertiary
-            transition-all duration-300
-            hover:bg-cp_palette_secondary
-            focus:outline-none">
-                    <span>Start 14-Day free trial</span>
-                </button>
+                100% {
+                    transform: translateY(-50%);
+                }
+            }
+        </style>
 
-                <!-- Subtext with Wrapped Span -->
-                <p class="mt-3 text-sm text-cp_text_secondary">
-                    <span>No credit card required</span>
-                </p>
-
-            </div>
-
-            <!-- Image with System Colors -->
-            <div class="flex justify-center mt-10">
-                <img class="object-cover w-full h-96 rounded-xl lg:w-4/5 border border-cp_borders_main"
-                    src="https://placehold.co/1200x600/1E3A8A/FFFFFF?text=App+Preview" alt="placeholder image">
-            </div>
-
-        </section>
-        <section class="bg-cp_background_default py-16 px-4 flex flex-col items-center">
-
-            <!-- Heading Section -->
+        <section class="bg-cp_background_default flex flex-col items-center justify-center py-16 px-4">
+            <!-- Section Header -->
             <div class="text-center mb-12">
-                <h1 class="text-[40px] font-medium text-cp_text_primary mb-4">
-                    <span>Explore what you can build</span>
+                <h1 class="text-4xl md:text-5xl font-medium text-cp_text_primary mb-4">
+                    <span>People love us</span>
                 </h1>
-                <p class="text-base text-cp_text_secondary max-w-md leading-relaxed">
-                    <span>Production-ready AI tools and software designed to speed up your workflow.</span>
+                <p class="text-sm text-cp_text_secondary max-w-md mx-auto">
+                    <span>Real stories from designers, developers, and product teams using our platform to ship faster
+                        and with confidence.</span>
                 </p>
             </div>
 
-            <!-- Cards Grid -->
-            <div class="flex flex-wrap items-center justify-center gap-6 max-w-6xl w-full">
-
-                <!-- Card 1 -->
+            <!-- Testimonials Scrolling Area -->
+            <div class="relative w-full max-w-6xl overflow-hidden">
+                <!-- Fading Gradients -->
                 <div
-                    class="bg-cp_background_paper border border-cp_borders_main rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-lg p-4 flex flex-col items-center">
-                    <img src="https://placehold.co/224x224/1E3A8A/FFFFFF?text=AI+Character" alt="AI Character Maker"
-                        class="w-full max-w-56 object-cover mb-6" />
-
-                    <div class="w-full max-w-56 flex flex-col h-full">
-                        <h3 class="text-base font-medium text-cp_text_primary mb-2">
-                            <span>AI Character Maker</span>
-                        </h3>
-                        <p class="text-xs text-cp_text_secondary leading-relaxed mb-3">
-                            <span>Generate any character or images you want.</span>
-                        </p>
-                        <div class='flex items-end justify-end'>
-                            <button
-                                class="inline-flex items-center gap-2 bg-transparent border-0 text-cp_palette_primary text-xs font-bold cursor-pointer p-0 hover:text-cp_palette_secondary group">
-                                <span>TRY NOW</span>
-                                <img src="https://placehold.co/22x15/1E3A8A/FFFFFF?text=→" alt="arrow"
-                                    class="transition-transform duration-300 group-hover:translate-x-1">
-                            </button>
-                        </div>
-                    </div>
+                    class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-cp_background_default to-transparent z-10 pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-cp_background_default to-transparent z-10 pointer-events-none">
                 </div>
 
-                <!-- Card 2 -->
-                <div
-                    class="bg-cp_background_paper border border-cp_borders_main rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-lg p-4 flex flex-col items-center">
-                    <img src="https://placehold.co/224x224/1E3A8A/FFFFFF?text=AI+Influencers" alt="AI Influencers"
-                        class="w-full max-w-56 object-cover mb-6" />
-
-                    <div class="w-full max-w-56 flex flex-col h-full">
-                        <h3 class="text-base font-medium text-cp_text_primary mb-2">
-                            <span>AI Influencers</span>
-                        </h3>
-                        <p class="text-xs text-cp_text_secondary leading-relaxed mb-3">
-                            <span>Create a model or AI influencer to grow your brands.</span>
-                        </p>
-                        <div class='flex items-end justify-end'>
-                            <button
-                                class="inline-flex items-center gap-2 bg-transparent border-0 text-cp_palette_primary text-xs font-bold cursor-pointer p-0 hover:text-cp_palette_secondary group">
-                                <span>TRY NOW</span>
-                                <img src="https://placehold.co/22x15/1E3A8A/FFFFFF?text=→" alt="arrow"
-                                    class="transition-transform duration-300 group-hover:translate-x-1">
-                            </button>
-                        </div>
-                    </div>
+                <!-- Columns Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-[650px] overflow-hidden"
+                    id="columns-container">
+                    <!-- سيتم توليد الكروت هنا بواسطة JavaScript -->
                 </div>
-
-                <!-- Card 3 -->
-                <div
-                    class="bg-cp_background_paper border border-cp_borders_main rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-lg p-4 flex flex-col items-center">
-                    <img src="https://placehold.co/224x224/1E3A8A/FFFFFF?text=AI+Paintings" alt="AI Paintings"
-                        class="w-full max-w-56 object-cover mb-6" />
-
-                    <div class="w-full max-w-56 flex flex-col h-full">
-                        <h3 class="text-base font-medium text-cp_text_primary mb-2">
-                            <span>AI Paintings</span>
-                        </h3>
-                        <p class="text-xs text-cp_text_secondary leading-relaxed mb-3">
-                            <span>Draw or make a painting with the help of AI.</span>
-                        </p>
-                        <div class='flex items-end justify-end'>
-                            <button
-                                class="inline-flex items-center gap-2 bg-transparent border-0 text-cp_palette_primary text-xs font-bold cursor-pointer p-0 hover:text-cp_palette_secondary group">
-                                <span>TRY NOW</span>
-                                <img src="https://placehold.co/22x15/1E3A8A/FFFFFF?text=→" alt="arrow"
-                                    class="transition-transform duration-300 group-hover:translate-x-1">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div
-                    class="bg-cp_background_paper border border-cp_borders_main rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-lg p-4 flex flex-col items-center">
-                    <img src="https://placehold.co/224x224/1E3A8A/FFFFFF?text=AI+Upscaler" alt="AI Image Upscaler"
-                        class="w-full max-w-56 object-cover mb-6" />
-
-                    <div class="w-full max-w-56 flex flex-col h-full">
-                        <h3 class="text-base font-medium text-cp_text_primary mb-2">
-                            <span>AI Image Upscaler</span>
-                        </h3>
-                        <p class="text-xs text-cp_text_secondary leading-relaxed mb-3">
-                            <span>Upscale your low quality image to make it in high quality.</span>
-                        </p>
-                        <div class='flex items-end justify-end'>
-                            <button
-                                class="inline-flex items-center gap-2 bg-transparent border-0 text-cp_palette_primary text-xs font-bold cursor-pointer p-0 hover:text-cp_palette_secondary group">
-                                <span>TRY NOW</span>
-                                <img src="https://placehold.co/22x15/1E3A8A/FFFFFF?text=→" alt="arrow"
-                                    class="transition-transform duration-300 group-hover:translate-x-1">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
-        <section class="py-16 px-5">
+        <section class="px-4 py-20 bg-cp_background_default">
             <div
-                class="max-w-5xl mx-2 md:mx-auto p-px rounded-2xl bg-cp_background_default border border-cp_borders_main">
+                class="w-full max-w-5xl bg-gradient-to-b from-[var(--palette-primary)] to-[var(--palette-secondary)] rounded-3xl px-6 pt-20 md:p-18 mx-auto flex flex-col md:flex-row justify-between items-center relative overflow-hidden border border-cp_borders_main">
 
-                <div
-                    class="flex flex-col items-center justify-center text-center py-12 md:py-16 rounded-[15px] bg-cp_background_paper">
+                <!-- Text Content -->
+                <div class="flex-1 px-2 md:pl-5 mb-8 md:mb-0 md:mt-4 text-center md:text-left z-10">
+                    <h1 class="text-3xl md:text-5xl font-bold text-cp_text_primary leading-tight">
+                        <span>Meet the team Shaping the future.</span>
+                    </h1>
 
-                    <!-- Badge -->
-                    <div
-                        class="flex items-center justify-center bg-cp_background_paper px-3 py-1.5 shadow gap-2 rounded-full text-xs border border-cp_borders_main">
-                        <img src="https://placehold.co/15x15/1E3A8A/FFFFFF?text=*" alt="icon" class="w-[15px] h-[15px]">
-
-                        <span class="text-cp_palette_primary font-medium">
-                            <span>Trusted by Experts</span>
-                        </span>
-                    </div>
-
-                    <!-- Title - تقسيم احترافي لكل جزء نصي -->
-                    <h2 class="text-2xl md:text-4xl font-medium mt-2 leading-[1.2] text-cp_text_primary">
-                        <span>Unlock Your Potential with</span>
-                        <br>
-                        <span class="text-cp_palette_primary">
-                            <span>Expert Guidance</span>
-                        </span>
-                        <br class="md:hidden"> <!-- اختياري لتحسين الشكل على الموبايل -->
-                        <span>& Proven Results!</span>
-                    </h2>
-
-                    <!-- Description -->
-                    <p class="text-cp_text_secondary mt-2 max-w-lg max-md:text-sm">
-                        <span>Achieve your goals faster with personalized strategies, hands-on support, and results that
-                            speak for themselves.</span>
+                    <p
+                        class="text-sm md:text-base text-cp_text_secondary max-w-full md:max-w-sm mt-4 mx-auto md:mx-0 leading-relaxed">
+                        <span>Our diverse team of engineers and designers are dedicated to building AI agents that
+                            simplify work and empower businesses.</span>
                     </p>
 
-                    <!-- Button -->
-                    <button type="button"
-                        class="bg-cp_palette_primary text-cp_text_tertiary text-sm px-5 py-2.5 rounded-xl font-medium mt-4 hover:bg-cp_palette_secondary transition-all duration-300">
-                        <span>Get Started Today</span>
+                    <button
+                        class="bg-cp_palette_primary hover:bg-cp_palette_primary/90 text-cp_text_tertiary px-8 py-3 rounded-full text-sm font-bold mt-8 cursor-pointer transition-all hover:shadow-lg hover:shadow-cp_palette_primary/20">
+                        <span>Join our team</span>
                     </button>
+                </div>
 
+                <!-- Image Content -->
+                <div class="shrink-0 md:-mr-18 -mb-6 md:-mb-24 md:mt-4 w-full md:w-auto relative group">
+                    <img class="w-full md:w-[520px] h-auto rounded-t-3xl md:rounded-tr-none md:rounded-br-3xl transition-transform duration-700 group-hover:scale-105"
+                        src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/team/team-meeting-image.png"
+                        alt="team meeting" />
+
+                    <!-- Overlay Glow -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-cp_palette_primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                    </div>
+                </div>
+
+                <!-- Background Decorative Element -->
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-cp_palette_primary/5 rounded-full blur-3xl -z-0">
                 </div>
             </div>
         </section>
@@ -499,7 +397,62 @@
                 bar2.classList.remove('opacity-0');
                 bar3.classList.remove('-rotate-45', '-translate-y-2');
             }
+        };
+        const testimonials = [
+            { id: 1, description: "<span>PrebuiltUI helped us reduce build time drastically. The components feel production ready and consistent across the product.</span>", image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200", name: "<span>Alex Turner</span>", company: "<span>Vercel</span>" },
+            { id: 2, description: "<span>We shipped our MVP weeks earlier than planned. PrebuiltUI removed a huge amount of repetitive UI work.</span>", image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200", name: "<span>Harry Peter</span>", company: "<span>Amazon</span>" },
+            { id: 3, description: "<span>PrebuiltUI strikes the right balance between flexibility and consistency. It feels like a system built by real product teams.</span>", image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60", name: "<span>Jason Kim</span>", company: "<span>Flipkart</span>" },
+            { id: 4, description: "<span>The component structure and tokens system make scaling design incredibly easy. Highly recommended.</span>", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&h=100&auto=format&fit=crop", name: "<span>Sofia Martinez</span>", company: "<span>Linear</span>" },
+            { id: 5, description: "<span>PrebuiltUI allows me to focus on building features instead of fighting CSS. Everything looks premium right out of the box.</span>", image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60", name: "<span>Alex Johnson</span>", company: "<span>Microsoft</span>" },
+            { id: 6, description: "<span>If you're using Tailwind CSS, PrebuiltUI is a must have. It dramatically speeds up development while keeping the UI clean.</span>", image: "https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=200", name: "<span>Emily Karter</span>", company: "<span>Stripe</span>" },
+            { id: 7, description: "<span>PrebuiltUI strikes the right balance between flexibility and consistency. It feels like a system built by real product teams.</span>", image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/userImage/userImage1.png", name: "<span>Christofer Levin</span>", company: "<span>Deloitte</span>" },
+            { id: 8, description: "<span>PrebuiltUI helped us reduce build time drastically. The components feel production ready and consistent across the product.</span>", image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200", name: "<span>Alex Turner</span>", company: "<span>Vercel</span>" },
+            { id: 9, description: "<span>We shipped our MVP weeks earlier than planned. PrebuiltUI removed a huge amount of repetitive UI work.</span>", image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200", name: "<span>Harry Peter</span>", company: "<span>Amazon</span>" }
+        ];
+
+        const columns = [
+            { start: 0, end: 3, className: "animate-scroll-up-1" },
+            { start: 3, end: 6, className: "hidden md:block animate-scroll-up-2 space-y-4" },
+            { start: 6, end: 9, className: "hidden lg:block animate-scroll-up-3 space-y-4" }
+        ];
+
+        function renderCard(testimonial, index, colIndex) {
+            return `
+            <div key="col${colIndex}-${testimonial.id}-${index}" class="bg-cp_background_paper border border-cp_borders_main rounded-xl p-6 mb-4 hover:border-cp_palette_primary/50 transition-all duration-300">
+                <div class="mb-5">
+                    <!-- Quote Icon Placeholder -->
+        <img src="https://placehold.co/21x15/1E3A8A/FFFFFF?text=%22" 
+             alt="quote" 
+             class="w-5 h-4 object-contain opacity-50 grayscale brightness-125" />
+                </div>
+                <p class="text-sm text-cp_text_secondary mb-5 leading-relaxed">
+                    ${testimonial.description}
+                </p>
+                <div class="flex items-center gap-3">
+                    <img src="${testimonial.image}" alt="${testimonial.name}" class="size-9 rounded-full border border-cp_borders_main object-cover" />
+                    <div>
+                        <p class="text-sm text-cp_text_primary font-medium">${testimonial.name}</p>
+                        <p class="text-sm text-cp_text_secondary opacity-70">${testimonial.company}</p>
+                    </div>
+                </div>
+            </div>
+        `;
         }
+
+        const columnsContainer = document.getElementById('columns-container');
+
+        columns.forEach((col, colIndex) => {
+            const columnDiv = document.createElement('div');
+            columnDiv.className = `flex flex-col ${col.className}`;
+
+            // مضاعفة المصفوفة لضمان استمرارية الحركة اللانهائية
+            const columnTestimonials = [...testimonials.slice(col.start, col.end), ...testimonials.slice(col.start, col.end)];
+            columnDiv.innerHTML = columnTestimonials.map((testimonial, index) =>
+                renderCard(testimonial, index, colIndex)
+            ).join('');
+
+            columnsContainer.appendChild(columnDiv);
+        });
     </script>
 
 </body>
