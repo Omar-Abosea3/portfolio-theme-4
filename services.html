@@ -204,7 +204,7 @@
 
     <!-- CONTENT -->
     <main>
-        <section class="container px-6 py-16 mx-auto text-center bg-cp_background_default">
+        <section id="services-hero" class="container px-6 py-16 mx-auto text-center bg-cp_background_default">
 
             <div class="max-w-lg mx-auto">
 
@@ -243,7 +243,7 @@
             </div>
 
         </section>
-        <section class="bg-cp_background_default py-16 px-4 flex flex-col items-center">
+        <section id="services-container" class="bg-cp_background_default py-16 px-4 flex flex-col items-center">
 
             <!-- Heading Section -->
             <div class="text-center mb-12">
@@ -356,7 +356,7 @@
 
             </div>
         </section>
-        <section class="py-16 px-5">
+        <section id="services-cta" class="py-16 px-5">
             <div
                 class="max-w-5xl mx-2 md:mx-auto p-px rounded-2xl bg-cp_background_default border border-cp_borders_main">
 
@@ -477,7 +477,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
     <script>
         let menuOpen = false;
         function toggleMenu() {
@@ -499,7 +499,143 @@
                 bar2.classList.remove('opacity-0');
                 bar3.classList.remove('-rotate-45', '-translate-y-2');
             }
-        }
+        };
+
+        const { animate } = anime;
+
+        /**
+         * دالة لربط الأنميشن بالسكرول (رايح جاي)
+         * @param {string} sectionSelector - السيكشن المستهدف
+         * @param {Object} animationSettings - إعدادات أنميشن Anime.js
+         */
+        const createScrollAnimation = (sectionSelector, animationSettings, isHero = false, splits = 8) => {
+            const section = document.querySelector(sectionSelector);
+            if (!section) return;
+
+            const animation = animate(animationSettings.targets, {
+                ...animationSettings,
+                autoplay: false
+            });
+
+            const updateAnimation = () => {
+                const sectionRect = section.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                let progress = 0;
+
+                if (isHero) {
+                    // منطق الهيرو (كما هو)
+                    let rawProgress = window.scrollY / section.offsetHeight;
+                    progress = rawProgress > 0.1 ? (rawProgress - 0.1) * 2 : 0;
+                } else {
+                    // منطق باقي السيكشنز (تعديل نقطة النهاية لمنتصف الشاشة)
+                    const start = windowHeight; // يبدأ الأنميشن أول ما السيكشن يلمس القاع
+                    const end = windowHeight / splits; // ينتهي الأنميشن تماماً لما السيكشن يوصل نص الشاشة
+
+                    // الحساب: النسبة من القاع لمنتصف الشاشة
+                    progress = (sectionRect.top - start) / (end - start);
+                }
+
+                const finalProgress = Math.max(0, Math.min(1, progress));
+                animation.seek(finalProgress * animation.duration);
+            };
+
+            window.addEventListener('scroll', updateAnimation);
+            updateAnimation();
+        };
+
+        // services-hero
+        // 1. أنميشن النصوص (العنوان، الوصف، الزرار)
+        createScrollAnimation('#services-hero', {
+            targets: '#services-hero .max-w-lg > *',
+            // تأثير التلاشي للأعلى
+            translateY: [0, -60],
+            opacity: [1, 0],
+            delay: anime.stagger(150), // تتابع بسيط لإعطاء فكرة الترتيب
+            easing: 'linear',
+            duration: 1000
+        }, true); // تفعيل وضع الـ Hero
+
+        // 2. أنميشن صورة المعاينة (App Preview)
+        createScrollAnimation('#services-hero', {
+            targets: '#services-hero img',
+            // الصورة بتبدأ بحجمها الطبيعي وتصغر وتختفي وهي طالعة لفوق
+            scale: [1, 0.8],
+            translateY: [0, -100],
+            opacity: [1, 0],
+            easing: 'linear',
+            duration: 1200
+        }, true);
+
+        // services-container
+        // 1. أنميشن العنوان والوصف (نفس السيستم الموحد)
+        createScrollAnimation('#services-container', {
+            targets: '#services-container .text-center > *',
+            translateY: [30, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(200),
+            easing: 'easeOutQuad',
+            duration: 800
+        });
+
+        // 2. أنميشن الكروت (تأثير الظهور المتتابع مع مرونة Elastic)
+        createScrollAnimation('#services-container', {
+            targets: '#services-container .flex-wrap > div',
+
+            // الحركة من اليمين شوية مع تكبير بسيط
+            translateX: [40, 0],
+            scale: [0.95, 1],
+            opacity: [0, 1],
+
+            // تتابع زمني ممتد شوية عشان اليوزر يلحق يشوف كل كارت
+            delay: anime.stagger(250),
+
+            easing: 'easeOutElastic(1, .8)', // حركة فيها مرونة "سوستة" خفيفة
+            duration: 1200
+        });
+
+        // 3. أنميشن الصور داخل الكروت (تأثير الـ AI Generation)
+        createScrollAnimation('#services-container', {
+            targets: '#services-container img:not([alt="arrow"])',
+
+            // الصورة بتبدأ باهتة وصغيرة وتكبر لمكانها
+            scale: [0.7, 1],
+            filter: ['blur(10px)', 'blur(0px)'], // تأثير الـ Focus
+            opacity: [0, 1],
+
+            delay: anime.stagger(250, { start: 500 }), // بتبدأ تظهر والصور بتتحرك
+            easing: 'easeOutCubic',
+            duration: 1000
+        });
+
+        // cta section 
+        // 1. أنميشن الحاوية الكبيرة (تأثير التوسع والظهور)
+        createScrollAnimation('#services-cta', {
+            targets: '#services-cta .max-w-5xl',
+            scale: [0.9, 1],
+            opacity: [0, 1],
+            easing: 'easeOutBack', // بيدي إيحاء بالارتداد بيشد الانتباه جداً
+            duration: 1000
+        });
+
+        // 2. أنميشن الـ Badge (تأثير النزول من فوق)
+        createScrollAnimation('#services-cta', {
+            targets: '#services-cta .max-w-5xl .flex.items-center.justify-center.bg-cp_background_paper',
+            translateY: [-20, 0],
+            opacity: [0, 1],
+            delay: 400,
+            easing: 'easeOutQuad',
+            duration: 600
+        });
+
+        // 3. أنميشن النصوص والزرار (دخول متتابع)
+        createScrollAnimation('#services-cta', {
+            targets: '#services-cta h2, #services-cta p, #services-cta button',
+            translateY: [20, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(150, { start: 600 }), // بيبدأ بعد ما الحاوية تظهر
+            easing: 'easeOutCubic',
+            duration: 800
+        });
     </script>
 
 </body>

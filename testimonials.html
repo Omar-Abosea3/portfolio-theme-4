@@ -229,7 +229,7 @@
             }
         </style>
 
-        <section class="bg-cp_background_default flex flex-col items-center justify-center py-16 px-4">
+        <section id="testimonials-hero" class="bg-cp_background_default flex flex-col items-center justify-center py-16 px-4">
             <!-- Section Header -->
             <div class="text-center mb-12">
                 <h1 class="text-4xl md:text-5xl font-medium text-cp_text_primary mb-4">
@@ -258,12 +258,12 @@
                 </div>
             </div>
         </section>
-        <section class="px-4 py-20 bg-cp_background_default">
+        <section id="testimonials-cta" class="px-4 py-20 bg-cp_background_default">
             <div
                 class="w-full max-w-5xl bg-gradient-to-b from-[var(--palette-primary)] to-[var(--palette-secondary)] rounded-3xl px-6 pt-20 md:p-18 mx-auto flex flex-col md:flex-row justify-between items-center relative overflow-hidden border border-cp_borders_main">
 
                 <!-- Text Content -->
-                <div class="flex-1 px-2 md:pl-5 mb-8 md:mb-0 md:mt-4 text-center md:text-left z-10">
+                <div class="flex-1 px-2 pb-8 md:pl-5 mb-8 md:mb-0 md:mt-4 text-center md:text-left z-10">
                     <h1 class="text-3xl md:text-5xl font-bold text-cp_text_primary leading-tight">
                         <span>Meet the team Shaping the future.</span>
                     </h1>
@@ -376,6 +376,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
     <script>
         let menuOpen = false;
         function toggleMenu() {
@@ -453,6 +454,91 @@
 
             columnsContainer.appendChild(columnDiv);
         });
+
+        const { animate } = anime;
+
+        /**
+         * دالة لربط الأنميشن بالسكرول (رايح جاي)
+         * @param {string} sectionSelector - السيكشن المستهدف
+         * @param {Object} animationSettings - إعدادات أنميشن Anime.js
+         */
+        const createScrollAnimation = (sectionSelector, animationSettings, isHero = false, splits = 8) => {
+            const section = document.querySelector(sectionSelector);
+            if (!section) return;
+
+            const animation = animate(animationSettings.targets, {
+                ...animationSettings,
+                autoplay: false
+            });
+
+            const updateAnimation = () => {
+                const sectionRect = section.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                let progress = 0;
+
+                if (isHero) {
+                    // منطق الهيرو (كما هو)
+                    let rawProgress = window.scrollY / section.offsetHeight;
+                    progress = rawProgress > 0.1 ? (rawProgress - 0.1) * 2 : 0;
+                } else {
+                    // منطق باقي السيكشنز (تعديل نقطة النهاية لمنتصف الشاشة)
+                    const start = windowHeight; // يبدأ الأنميشن أول ما السيكشن يلمس القاع
+                    const end = windowHeight / splits; // ينتهي الأنميشن تماماً لما السيكشن يوصل نص الشاشة
+
+                    // الحساب: النسبة من القاع لمنتصف الشاشة
+                    progress = (sectionRect.top - start) / (end - start);
+                }
+
+                const finalProgress = Math.max(0, Math.min(1, progress));
+                animation.seek(finalProgress * animation.duration);
+            };
+
+            window.addEventListener('scroll', updateAnimation);
+            updateAnimation();
+        };
+
+        // testmonials-cta
+        // 1. أنميشن الحاوية المتدرجة (ظهور ناعم مع تمدد)
+createScrollAnimation('#testimonials-cta', {
+    targets: '#testimonials-cta .max-w-5xl',
+    scale: [0.98, 1],
+    opacity: [0, 1],
+    easing: 'easeOutExpo',
+    duration: 1200
+});
+
+// 2. أنميشن المحتوى النصي (دخول من اليسار)
+createScrollAnimation('#testimonials-cta', {
+    targets: '#testimonials-cta h1, #testimonials-cta p, #testimonials-cta button',
+    translateX: [-30, 0],
+    opacity: [0, 1],
+    delay: anime.stagger(150, {start: 400}),
+    easing: 'easeOutCubic',
+    duration: 800
+});
+
+// 3. أنميشن صورة الفريق (تأثير الـ Slide-in الاحترافي)
+createScrollAnimation('#testimonials-cta', {
+    targets: '#testimonials-cta img',
+    // الصورة تدخل من اليمين وبزاوية ميل خفيفة لتعزيز العمق
+    translateX: [50, 0],
+    translateY: [20, 0],
+    scale: [1.1, 1], 
+    opacity: [0, 1],
+    delay: 600,
+    easing: 'easeOutQuart',
+    duration: 1000
+});
+
+// 4. أنميشن الـ Decorative Glow (نبض خفيف في الخلفية)
+createScrollAnimation('#testimonials-cta', {
+    targets: '#testimonials-cta .absolute.blur-3xl',
+    scale: [0.5, 1.2],
+    opacity: [0, 0.3],
+    delay: 800,
+    easing: 'easeOutSine',
+    duration: 1500
+});
     </script>
 
 </body>

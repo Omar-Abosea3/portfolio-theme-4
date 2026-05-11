@@ -205,9 +205,9 @@
     <main>
         <!-- hero section -->
 
-        <section class="bg-cp_background_default">
+        <section id="hero-section" class="bg-cp_background_default">
             <div class="container px-6 py-16 mx-auto">
-                <div class="items-center lg:flex">
+                <div class="contentContainer items-center lg:flex">
 
                     <!-- Text Column -->
                     <div class="w-full lg:w-1/2">
@@ -257,7 +257,7 @@
             </div>
         </section>
         <!-- features -->
-        <section class="bg-cp_background_default">
+        <section id="features-section" class="bg-cp_background_default">
             <div class="container px-6 py-10 mx-auto">
 
                 <!-- Heading - تم تقسيم النصوص داخل spans منفصلة -->
@@ -342,8 +342,8 @@
                 </div>
             </div>
         </section>
-        <!-- testimonials -->
-        <section class="bg-cp_background_default">
+        <!-- our clients -->
+        <section id="our-clients" class="bg-cp_background_default">
             <div class="container px-6 py-10 mx-auto">
 
                 <!-- Heading -->
@@ -435,7 +435,7 @@
         </section>
 
         <!-- cta -->
-        <section class="bg-cp_background_default lg:py-16 lg:px-0 px-6 lg:flex lg:justify-center">
+        <section id="cta-section" class="bg-cp_background_default lg:py-16 lg:px-0 px-6 lg:flex lg:justify-center">
             <div
                 class="overflow-hidden bg-cp_background_paper border border-cp_borders_main lg:mx-8 lg:flex lg:items-center lg:max-w-6xl lg:w-full lg:shadow-md lg:rounded-xl rounded-md">
 
@@ -560,6 +560,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
     <script>
         let menuOpen = false;
         function toggleMenu() {
@@ -581,7 +582,147 @@
                 bar2.classList.remove('opacity-0');
                 bar3.classList.remove('-rotate-45', '-translate-y-2');
             }
-        }
+        };
+
+        const { animate } = anime;
+
+        /**
+         * دالة لربط الأنميشن بالسكرول (رايح جاي)
+         * @param {string} sectionSelector - السيكشن المستهدف
+         * @param {Object} animationSettings - إعدادات أنميشن Anime.js
+         */
+        const createScrollAnimation = (sectionSelector, animationSettings, isHero = false, splits = 8) => {
+            const section = document.querySelector(sectionSelector);
+            if (!section) return;
+
+            const animation = animate(animationSettings.targets, {
+                ...animationSettings,
+                autoplay: false
+            });
+
+            const updateAnimation = () => {
+                const sectionRect = section.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                let progress = 0;
+
+                if (isHero) {
+                    // منطق الهيرو (كما هو)
+                    let rawProgress = window.scrollY / section.offsetHeight;
+                    progress = rawProgress > 0.1 ? (rawProgress - 0.1) * 2 : 0;
+                } else {
+                    // منطق باقي السيكشنز (تعديل نقطة النهاية لمنتصف الشاشة)
+                    const start = windowHeight; // يبدأ الأنميشن أول ما السيكشن يلمس القاع
+                    const end = windowHeight / splits; // ينتهي الأنميشن تماماً لما السيكشن يوصل نص الشاشة
+
+                    // الحساب: النسبة من القاع لمنتصف الشاشة
+                    progress = (sectionRect.top - start) / (end - start);
+                }
+
+                const finalProgress = Math.max(0, Math.min(1, progress));
+                animation.seek(finalProgress * animation.duration);
+            };
+
+            window.addEventListener('scroll', updateAnimation);
+            updateAnimation();
+        };
+
+        // الاستدعاء الخاص بيك
+        createScrollAnimation('#hero-section', {
+            targets: '#hero-section .contentContainer > div',
+            translateY: [0, 0],
+            translateX: (el, i) => {
+                return i === 0 ? [0, -120] : [0, 120];
+            },
+            opacity: [1, 0], // خلي الـ opacity ينتهي عند 0 عشان يختفي وهو بيتحرك
+            easing: 'linear',
+            duration: 1000
+        }, true);
+        // features
+        createScrollAnimation('#features-section', {
+            // استهداف الكروت نفسها
+            targets: '#features-section .grid > div',
+
+            // الأنميشن: الكروت تطلع من تحت لفوق وتظهر
+            translateY: [300, 0],
+            opacity: [0, 1],
+
+            // إضافة تأخير بسيط (Stagger) بين كل كارت والتاني
+            delay: anime.stagger(500),
+
+            easing: 'linear',
+            duration: 2000
+        });
+
+        // أنميشن إضافي للعنوان (Heading) عشان يتحرك هو كمان
+        createScrollAnimation('#features-section', {
+            targets: '#features-section h1, #features-section p',
+            translateX: [-400, 0],
+            opacity: [0, 1],
+            easing: 'linear',
+            duration: 2000
+        });
+
+        // our clients
+        // أنميشن العنوان والوصف أولاً
+        createScrollAnimation('#our-clients', {
+            targets: '#our-clients h1, #our-clients p',
+            translateY: [300, 0],
+            opacity: [0, 1],
+            easing: 'linear',
+            duration: 1500
+        });
+
+        // أنميشن كروت الآراء (Testimonial Cards)
+        createScrollAnimation('#our-clients', {
+            targets: '#our-clients .grid > div',
+
+            // تأثير "الدخول من العمق"
+            scale: [0.8, 1],
+
+            // ميلان خفيف جداً يدي روح للتصميم
+            rotateZ: (el, i) => {
+                return i % 2 === 0 ? [-2, 0] : [2, 0]; // الكروت الزوجية تميل شمال والفردية يمين
+            },
+
+            translateY: [300, 0],
+            opacity: [0, 1],
+
+            // توزيع زمني عشان ميبدأوش مع بعض
+            delay: anime.stagger(300),
+
+            easing: 'linear',
+            duration: 1500
+        });
+
+        // cta
+        // 1. أنميشن الـ Container الأساسي (تكبير بسيط وظهور)
+        createScrollAnimation('#cta-section', {
+            targets: '#cta-section > div',
+            scale: [0.9, 1],
+            opacity: [0, 1],
+            easing: 'easeOutQuad', // تنعيم الحركة هنا أفضل للـ Scale
+            duration: 1000
+        });
+
+        // 2. أنميشن الصورة (تدخل من الشمال)
+        createScrollAnimation('#cta-section', {
+            targets: '#cta-section img',
+            translateX: [-100, 0],
+            scale: [1.2, 1], // تأثير زووم مع الحركة
+            opacity: [0, 1],
+            easing: 'linear',
+            duration: 1200
+        });
+
+        // 3. أنميشن النصوص والأزرار (تدخل من اليمين)
+        createScrollAnimation('#cta-section', {
+            targets: '#cta-section .max-w-xl > *', // استهداف كل العناصر داخل عمود النص
+            translateX: [100, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(150), // تتابع في ظهور النص ثم الأزرار
+            easing: 'linear',
+            duration: 1000
+        });
     </script>
 
 </body>

@@ -204,8 +204,8 @@
 
     <!-- CONTENT -->
     <main>
-        <section class="container px-6 py-16 mx-auto text-center bg-cp_background_default">
-            <div class="max-w-lg mx-auto">
+        <section id="hero-section" class="container px-6 py-16 mx-auto text-center bg-cp_background_default">
+            <div class="content max-w-lg mx-auto">
 
                 <!-- Main Title -->
                 <h1 class="text-3xl font-semibold text-cp_text_primary lg:text-4xl">
@@ -266,7 +266,7 @@
                 </div>
             </div>
         </section>
-        <section class="mx-auto w-full bg-cp_background_default lg:px-32 px-8 py-24">
+        <section id="about-section" class="mx-auto w-full bg-cp_background_default lg:px-32 px-8 py-24">
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
@@ -370,7 +370,7 @@
             </div>
         </section>
         <!-- our team -->
-        <section class="bg-cp_background_paper">
+        <section id="our-team" class="bg-cp_background_paper">
             <div class="container px-6 py-10 mx-auto">
                 <!-- Section Heading -->
                 <h1 class="text-2xl font-semibold text-center text-cp_text_primary capitalize lg:text-3xl">
@@ -489,7 +489,7 @@
         </section>
 
         <!-- Stats Section -->
-        <section class="bg-cp_background_paper py-12">
+        <section id="stat-section" class="bg-cp_background_paper py-12">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
 
@@ -635,7 +635,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
     <script>
         let menuOpen = false;
         function toggleMenu() {
@@ -657,7 +657,184 @@
                 bar2.classList.remove('opacity-0');
                 bar3.classList.remove('-rotate-45', '-translate-y-2');
             }
-        }
+        };
+
+        const { animate } = anime;
+
+        /**
+         * دالة لربط الأنميشن بالسكرول (رايح جاي)
+         * @param {string} sectionSelector - السيكشن المستهدف
+         * @param {Object} animationSettings - إعدادات أنميشن Anime.js
+         */
+        const createScrollAnimation = (sectionSelector, animationSettings, isHero = false , splits = 8) => {
+            const section = document.querySelector(sectionSelector);
+            if (!section) return;
+
+            const animation = animate(animationSettings.targets, {
+                ...animationSettings,
+                autoplay: false
+            });
+
+            const updateAnimation = () => {
+                const sectionRect = section.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                let progress = 0;
+
+                if (isHero) {
+                    // منطق الهيرو (كما هو)
+                    let rawProgress = window.scrollY / section.offsetHeight;
+                    progress = rawProgress > 0.1 ? (rawProgress - 0.1) * 2 : 0;
+                } else {
+                    // منطق باقي السيكشنز (تعديل نقطة النهاية لمنتصف الشاشة)
+                    const start = windowHeight; // يبدأ الأنميشن أول ما السيكشن يلمس القاع
+                    const end = windowHeight / splits; // ينتهي الأنميشن تماماً لما السيكشن يوصل نص الشاشة
+
+                    // الحساب: النسبة من القاع لمنتصف الشاشة
+                    progress = (sectionRect.top - start) / (end - start);
+                }
+
+                const finalProgress = Math.max(0, Math.min(1, progress));
+                animation.seek(finalProgress * animation.duration);
+            };
+
+            window.addEventListener('scroll', updateAnimation);
+            updateAnimation();
+        };
+
+        // hero-section 
+        // 1. أنميشن المحتوى الرئيسي (العنوان، الوصف، الفورم)
+        createScrollAnimation('#hero-section', {
+            targets: '#hero-section .content > *',
+            // تأثير التلاشي مع الصعود للأعلى
+            translateY: [0, -200],
+            opacity: [1, 0],
+            // توزيع زمني بسيط بين العناصر
+            delay: anime.stagger(200),
+            easing: 'linear',
+            duration: 1000
+        }, true); // تفعيل خاصية الـ Hero
+
+        // 2. أنميشن اللوجوهات (الشركاء)
+        createScrollAnimation('#hero-section', {
+            targets: '#hero-section .grid > div',
+            // اللوجوهات ممكن تفتح لبره (Scale Out) وهي بتختفي
+            scale: [1, 1.2],
+            opacity: [0.7, 0], // بتبدأ من 0.7 حسب الكلاس بتاعك
+            translateY: [0, -50],
+            delay: anime.stagger(50),
+            easing: 'linear',
+            duration: 1000
+        }, true);
+
+
+        // about section
+        // 1. أنميشن العمود الأيسر (يدخل من الشمال مع حركة لفوق)
+        createScrollAnimation('#about-section', {
+            targets: '#about-section .grid > div:nth-child(1)',
+            translateX: [-500, 0],
+            translateY: [100, 0],
+            opacity: [0, 1],
+            easing: 'linear',
+            duration: 2000
+        });
+
+        // 2. أنميشن العمود الأوسط (يطلع من تحت أبطأ شوية - Parallax)
+        createScrollAnimation('#about-section', {
+            targets: '#about-section .grid > div:nth-child(2)',
+            translateY: [500, 0], // مسافة أكبر عشان يبان أبطأ
+            opacity: [0, 1],
+            easing: 'linear',
+            duration: 1200
+        });
+
+        // 3. أنميشن العمود الأيمن (يدخل من اليمين مع حركة لفوق)
+        createScrollAnimation('#about-section', {
+            targets: '#about-section .grid > div:nth-child(3)',
+            translateX: [500, 0],
+            translateY: [100, 0],
+            opacity: [0, 1],
+            easing: 'linear',
+            duration: 1000
+        });
+
+        // 4. أنميشن الصور داخل الكروت (Zoom In خفيف)
+        createScrollAnimation('#about-section', {
+            targets: '#about-section img',
+            scale: [1.5, 1],
+            opacity: [0.5, 1],
+            delay: anime.stagger(500),
+            easing: 'linear',
+            duration: 1500
+        });
+
+        // our team 
+        // 1. أنميشن العنوان والوصف (زي ما تعودنا)
+        createScrollAnimation('#our-team', {
+            targets: '#our-team h1, #our-team p',
+            translateY: [1000, 0],
+            opacity: [0, 0.5, 1],
+            easing: 'linear',
+            duration: 2000
+        });
+
+        // 2. أنميشن كروت الفريق (تأثير الظهور التدريجي)
+        createScrollAnimation('#our-team', {
+            targets: '#our-team .grid > div',
+
+            // الكروت هتبدأ من تحت وبحجم أصغر شوية
+            translateY: [1000, 0],
+            scale: [0.5, 1],
+            opacity: [0, 1],
+
+            // ده أهم جزء: التتابع الزمني بين ظهور الأعضاء
+            delay: anime.stagger(500),
+
+            easing: 'linear',
+            duration: 3000
+        });
+
+        // 3. أنميشن خاص لصور الأعضاء (دوران خفيف مع الظهور)
+        createScrollAnimation('#our-team', {
+            targets: '#our-team img.rounded-full',
+            rotate: [15, 0],
+            scale: [0.5, 1],
+            opacity: [0, 1],
+            delay: anime.stagger(200, { start: 300 }), // بيبدأ بعد الكروت بشوية
+            easing: 'easeOutBack', // بيدي هزة بسيطة في الآخر بتبان بروفيشنال
+            duration: 800
+        });
+
+        // stat section 
+        // 1. أنميشن الحاوية الأساسية للكروت (ظهور من الأسفل)
+        createScrollAnimation('#stat-section', {
+            targets: '#stat-section .grid > div',
+
+            // حركة صعود خفيفة مع تكبير (Scale)
+            translateY: [50, 0],
+            scale: [0.9, 1],
+            opacity: [0, 1],
+
+            // ظهور متتابع (واحد ورا التاني)
+            delay: anime.stagger(200),
+
+            easing: 'easeOutQuad',
+            duration: 800
+        },false , 2);
+
+        // 2. أنميشن الأرقام (تأثير نبض خفيف عند الظهور)
+        createScrollAnimation('#stat-section', {
+            targets: '#stat-section .text-4xl',
+
+            // الرقم يبدأ صغير ويكبر عشان يشد العين
+            scale: [0.5, 1],
+            opacity: [0, 1],
+
+            // تأخير إضافي عشان الأرقام تظهر بعد ما الكروت تبدأ تظهر
+            delay: anime.stagger(200, { start: 400 }),
+
+            easing: 'easeOutBack', // هزة خفيفة بتدي روح للأرقام
+            duration: 1000
+        });
     </script>
 
 </body>

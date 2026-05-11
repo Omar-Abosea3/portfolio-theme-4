@@ -205,7 +205,7 @@
     <!-- CONTENT -->
     <main>
         <!-- Hero Section -->
-        <section
+        <section id="blog-hero"
             class="h-[650px] flex flex-col items-center justify-center px-4 text-center bg-cp_background_default relative overflow-hidden">
 
             <!-- Announcement Badge -->
@@ -257,7 +257,7 @@
                 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cp_palette_primary/5 rounded-full blur-[120px] -z-10">
             </div>
         </section>
-        <section class="bg-cp_background_default py-16">
+        <section id="blogs-section" class="bg-cp_background_default py-16">
             <div class="container mx-auto px-4">
                 <!-- Section Header -->
                 <h1 class="text-3xl font-semibold text-center mx-auto text-cp_text_primary">
@@ -328,8 +328,8 @@
                 </div>
             </div>
         </section>
-        <section
-            class="max-w-5xl py-16 md:pl-24 md:w-full mx-2 md:mx-auto flex flex-col items-start justify-center text-left bg-gradient-to-b from-[var(--palette-primary)] to-[var(--palette-secondary)] rounded-2xl p-10 text-cp_text_tertiary relative overflow-hidden">
+        <section id="blog-cta"
+            class="max-w-5xl py-16 mb-16 md:pl-24 md:w-full mx-2 md:mx-auto flex flex-col items-start justify-center text-left bg-gradient-to-b from-[var(--palette-primary)] to-[var(--palette-secondary)] rounded-2xl p-10 text-cp_text_tertiary relative overflow-hidden">
 
             <!-- Social Proof Header -->
             <div class="flex items-center">
@@ -452,7 +452,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
     <script>
         let menuOpen = false;
         function toggleMenu() {
@@ -474,7 +474,171 @@
                 bar2.classList.remove('opacity-0');
                 bar3.classList.remove('-rotate-45', '-translate-y-2');
             }
-        }
+        };
+
+        const { animate } = anime;
+
+        /**
+         * دالة لربط الأنميشن بالسكرول (رايح جاي)
+         * @param {string} sectionSelector - السيكشن المستهدف
+         * @param {Object} animationSettings - إعدادات أنميشن Anime.js
+         */
+        const createScrollAnimation = (sectionSelector, animationSettings, isHero = false, splits = 8) => {
+            const section = document.querySelector(sectionSelector);
+            if (!section) return;
+
+            const animation = animate(animationSettings.targets, {
+                ...animationSettings,
+                autoplay: false
+            });
+
+            const updateAnimation = () => {
+                const sectionRect = section.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                let progress = 0;
+
+                if (isHero) {
+                    // منطق الهيرو (كما هو)
+                    let rawProgress = window.scrollY / section.offsetHeight;
+                    progress = rawProgress > 0.1 ? (rawProgress - 0.1) * 2 : 0;
+                } else {
+                    // منطق باقي السيكشنز (تعديل نقطة النهاية لمنتصف الشاشة)
+                    const start = windowHeight; // يبدأ الأنميشن أول ما السيكشن يلمس القاع
+                    const end = windowHeight / splits; // ينتهي الأنميشن تماماً لما السيكشن يوصل نص الشاشة
+
+                    // الحساب: النسبة من القاع لمنتصف الشاشة
+                    progress = (sectionRect.top - start) / (end - start);
+                }
+
+                const finalProgress = Math.max(0, Math.min(1, progress));
+                animation.seek(finalProgress * animation.duration);
+            };
+
+            window.addEventListener('scroll', updateAnimation);
+            updateAnimation();
+        };
+
+        // blog hero 
+        // 1. أنميشن الـ Announcement Badge (بيظهر الأول من فوق)
+        createScrollAnimation('#blog-hero', {
+            targets: '#blog-hero div.flex-wrap.rounded-full',
+            translateY: [0, 50],
+            opacity: [1, 0],
+            easing: 'easeOutQuad',
+            duration: 800
+        }, true); // وضع الـ Hero
+
+        // 2. أنميشن العنوان الرئيسي (تأثير الكتابة الصاعد)
+        createScrollAnimation('#blog-hero', {
+            targets: '#blog-hero h1 span',
+            translateY: [0, 50],
+            opacity: [1, 0],
+            // التتابع هنا بيخلي الكلمات تظهر ورا بعضها بشكل رائع
+            delay: anime.stagger(150, { start: 300 }),
+            easing: 'easeOutCubic',
+            duration: 1000
+        }, true);
+
+        // 3. أنميشن الوصف والأزرار (تلاشي ناعم)
+        createScrollAnimation('#blog-hero', {
+            targets: '#blog-hero p.max-w-2xl, #blog-hero div.flex-col.sm\\:flex-row',
+            translateY: [0, 100],
+            opacity: [1, 0],
+            delay: 800, // بيبدأ بعد ما العنوان يخلص ظهور
+            easing: 'linear',
+            duration: 800
+        }, true);
+
+        // 4. أنميشن الـ Background Glow (تأثير النبض الخفي)
+        createScrollAnimation('#blog-hero', {
+            targets: '#blog-hero div.absolute.rounded-full',
+            scale: [0.5, 1.2],
+            opacity: [0, 0.5],
+            easing: 'easeOutSine',
+            duration: 2000
+        }, true);
+
+        // blogs-section
+        // 1. أنميشن العنوان والوصف (السيستم الموحد)
+        createScrollAnimation('#blogs-section', {
+            targets: '#blogs-section h1, #blogs-section p.max-w-lg',
+            translateY: [30, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(200),
+            easing: 'easeOutQuad',
+            duration: 800
+        });
+
+        // 2. أنميشن كروت المقالات (ظهور من الأسفل مع تتابع)
+        createScrollAnimation('#blogs-section', {
+            targets: '#blogs-section .flex-wrap > div',
+
+            // الكروت تطلع من تحت لفوق بحركة ناعمة
+            translateY: [100, 0],
+            opacity: [0, 1],
+
+            // تتابع ظهور الكروت (أول كارت ثم التاني ثم التالت)
+            delay: anime.stagger(200, { start: 400 }),
+
+            easing: 'easeOutCubic',
+            duration: 1000
+        });
+
+        // 3. أنميشن الصور داخل الكروت (تأثير Zoom-out ناعم عند الظهور)
+        createScrollAnimation('#blogs-section', {
+            targets: '#blogs-section img',
+
+            // بتبدأ كبيرة شوية وترجع لحجمها الطبيعي (1)
+            scale: [1.3, 1],
+            opacity: [0, 1],
+
+            delay: anime.stagger(200, { start: 500 }),
+            easing: 'easeOutQuart',
+            duration: 1200
+        });
+
+        // blog-cta
+        // 1. أنميشن الحاوية الكبيرة (تأثير التمدد مع التدرج)
+        createScrollAnimation('#blog-cta', {
+            targets: '#blog-cta',
+            // السيكشن يظهر وكأنه يتمدد من الداخل للخارج
+            scale: [0.95, 1],
+            opacity: [0, 1],
+            easing: 'easeOutExpo',
+            duration: 1000
+        });
+
+        // 2. أنميشن صور المستخدمين (Social Proof Stack)
+        createScrollAnimation('#blog-cta', {
+            targets: '#blog-cta .flex.-space-x-3 img',
+            // الصور تظهر واحدة تلو الأخرى بتأثير "Pop"
+            scale: [0, 1],
+            translateX: [-20, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(100, { start: 500 }),
+            easing: 'easeOutBack', // ارتداد بسيط لجعلها حيوية
+            duration: 800
+        });
+
+        // 3. أنميشن النجوم والنص المرفق
+        createScrollAnimation('#blog-cta', {
+            targets: '#blog-cta svg, #blog-cta p.text-sm',
+            opacity: [0, 1],
+            translateX: [10, 0],
+            delay: anime.stagger(100, { start: 800 }),
+            easing: 'easeOutQuad',
+            duration: 600
+        });
+
+        // 4. أنميشن العنوان والزر (الصعود الناعم)
+        createScrollAnimation('#blog-cta', {
+            targets: '#blog-cta h1, #blog-cta p.text-lg, #blog-cta button',
+            translateY: [30, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(150, { start: 900 }),
+            easing: 'easeOutCubic',
+            duration: 800
+        });
     </script>
 
 </body>

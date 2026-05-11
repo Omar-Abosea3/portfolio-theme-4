@@ -204,20 +204,20 @@
 
     <!-- CONTENT -->
     <main>
-        <section class="min-h-screen bg-cp_background_default relative overflow-hidden">
+        <section id="contact-us" class="min-h-screen bg-cp_background_default relative overflow-hidden">
             <!-- Decorative Background Glows -->
             <div
-                class="absolute top-0 right-0 w-[500px] h-[500px] bg-cp_palette_primary/5 rounded-full blur-[120px] -z-10">
+                class="absolute top-0 right-0 w-[500px] h-[500px] bg-cp_palette_primary/5 rounded-full blured blur-[120px] -z-10">
             </div>
             <div
-                class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cp_palette_secondary/5 rounded-full blur-[120px] -z-10">
+                class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cp_palette_secondary/5 rounded-full blured blur-[120px] -z-10">
             </div>
 
             <div class="container flex flex-col min-h-screen px-6 py-12 mx-auto">
                 <div class="flex-1 lg:flex lg:items-center lg:-mx-6">
 
                     <!-- Left Side: Contact Info -->
-                    <div class="lg:w-1/2 lg:mx-6">
+                    <div class="left-side lg:w-1/2 lg:mx-6">
                         <h1 class="text-3xl font-bold text-cp_text_primary capitalize lg:text-5xl">
                             <span>Get a quote</span>
                         </h1>
@@ -230,11 +230,9 @@
                         <div class="mt-8 space-y-8 md:mt-12">
                             <!-- Location -->
                             <div class="flex items-start -mx-2 group cursor-pointer">
-                                <div
-                                    class="w-12 h-12 p-3 bg-cp_palette_primary/10 rounded-lg">
+                                <div class="w-12 h-12 p-3 bg-cp_palette_primary/10 rounded-lg">
                                     <img src="https://api.iconify.design/heroicons:map-pin.svg?color=%236366f1"
-                                        alt="location icon"
-                                        class="w-full h-full object-contain" />
+                                        alt="location icon" class="w-full h-full object-contain" />
                                 </div>
                                 <span class="mx-4 text-cp_text_secondary truncate w-72 self-center font-medium">
                                     Cecilia Chapman 711-2880 Nulla St.
@@ -243,11 +241,9 @@
 
                             <!-- Phone -->
                             <div class="flex items-start -mx-2 group cursor-pointer">
-                                <div
-                                    class="w-12 h-12 p-3 bg-cp_palette_primary/10 rounded-lg">
+                                <div class="w-12 h-12 p-3 bg-cp_palette_primary/10 rounded-lg">
                                     <img src="https://api.iconify.design/heroicons:phone.svg?color=%236366f1"
-                                        alt="phone icon"
-                                        class="w-full h-full object-contain" />
+                                        alt="phone icon" class="w-full h-full object-contain" />
                                 </div>
                                 <span class="mx-4 text-cp_text_secondary truncate w-72 self-center font-medium">(257)
                                     563-7401</span>
@@ -255,11 +251,9 @@
 
                             <!-- Email -->
                             <div class="flex items-start -mx-2 group cursor-pointer">
-                                <div
-                                    class="w-12 h-12 p-3 bg-cp_palette_primary/10 rounded-lg">
+                                <div class="w-12 h-12 p-3 bg-cp_palette_primary/10 rounded-lg">
                                     <img src="https://api.iconify.design/heroicons:envelope.svg?color=%236366f1"
-                                        alt="email icon"
-                                        class="w-full h-full object-contain" />
+                                        alt="email icon" class="w-full h-full object-contain" />
                                 </div>
                                 <span
                                     class="mx-4 text-cp_text_secondary truncate w-72 self-center font-medium">acb@example.com</span>
@@ -283,7 +277,7 @@
                     </div>
 
                     <!-- Right Side: Contact Form -->
-                    <div class="mt-8 lg:w-1/2 lg:mx-6">
+                    <div class="right-side mt-8 lg:w-1/2 lg:mx-6">
                         <div
                             class="w-full px-8 py-10 mx-auto bg-cp_background_paper shadow-2xl shadow-cp_palette_primary/10 border border-cp_borders_main rounded-2xl lg:max-w-xl">
                             <h2 class="text-2xl font-bold text-cp_text_primary">
@@ -398,7 +392,6 @@
             </div>
         </div>
     </footer>
-
     <script>
         let menuOpen = false;
         function toggleMenu() {
@@ -421,7 +414,6 @@
                 bar3.classList.remove('-rotate-45', '-translate-y-2');
             }
         };
-
     </script>
 </body>
 
