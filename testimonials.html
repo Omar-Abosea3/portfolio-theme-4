@@ -204,32 +204,8 @@
 
     <!-- CONTENT -->
     <main>
-        <style>
-            /* التعديل هنا لضمان استخدام الخط الخاص بك وتحسين أداء الحركة */
-            .animate-scroll-up-1 {
-                animation: scroll-up 25s linear infinite;
-            }
-
-            .animate-scroll-up-2 {
-                animation: scroll-up 30s linear infinite;
-            }
-
-            .animate-scroll-up-3 {
-                animation: scroll-up 20s linear infinite;
-            }
-
-            @keyframes scroll-up {
-                0% {
-                    transform: translateY(0);
-                }
-
-                100% {
-                    transform: translateY(-50%);
-                }
-            }
-        </style>
-
-        <section id="testimonials-hero" class="bg-cp_background_default flex flex-col items-center justify-center py-16 px-4">
+        <section id="testimonials-hero"
+            class="bg-cp_background_default flex flex-col items-center justify-center py-16 px-4">
             <!-- Section Header -->
             <div class="text-center mb-12">
                 <h1 class="text-4xl md:text-5xl font-medium text-cp_text_primary mb-4">
@@ -360,15 +336,15 @@
                 <div class="flex mt-4 sm:mt-0 space-x-3">
 
                     <a href="#">
-                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=FB" alt="social icon">
+                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=FB" alt="social icon" class="w-6 h-6">
                     </a>
 
                     <a href="#">
-                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=TW" alt="social icon">
+                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=TW" alt="social icon" class="w-6 h-6">
                     </a>
 
                     <a href="#">
-                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=LN" alt="social icon">
+                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=LN" alt="social icon" class="w-6 h-6">
                     </a>
 
                 </div>
@@ -399,63 +375,73 @@
                 bar3.classList.remove('-rotate-45', '-translate-y-2');
             }
         };
-        const testimonials = [
-            { id: 1, description: "<span>PrebuiltUI helped us reduce build time drastically. The components feel production ready and consistent across the product.</span>", image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200", name: "<span>Alex Turner</span>", company: "<span>Vercel</span>" },
-            { id: 2, description: "<span>We shipped our MVP weeks earlier than planned. PrebuiltUI removed a huge amount of repetitive UI work.</span>", image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200", name: "<span>Harry Peter</span>", company: "<span>Amazon</span>" },
-            { id: 3, description: "<span>PrebuiltUI strikes the right balance between flexibility and consistency. It feels like a system built by real product teams.</span>", image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60", name: "<span>Jason Kim</span>", company: "<span>Flipkart</span>" },
-            { id: 4, description: "<span>The component structure and tokens system make scaling design incredibly easy. Highly recommended.</span>", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&h=100&auto=format&fit=crop", name: "<span>Sofia Martinez</span>", company: "<span>Linear</span>" },
-            { id: 5, description: "<span>PrebuiltUI allows me to focus on building features instead of fighting CSS. Everything looks premium right out of the box.</span>", image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60", name: "<span>Alex Johnson</span>", company: "<span>Microsoft</span>" },
-            { id: 6, description: "<span>If you're using Tailwind CSS, PrebuiltUI is a must have. It dramatically speeds up development while keeping the UI clean.</span>", image: "https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=200", name: "<span>Emily Karter</span>", company: "<span>Stripe</span>" },
-            { id: 7, description: "<span>PrebuiltUI strikes the right balance between flexibility and consistency. It feels like a system built by real product teams.</span>", image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/userImage/userImage1.png", name: "<span>Christofer Levin</span>", company: "<span>Deloitte</span>" },
-            { id: 8, description: "<span>PrebuiltUI helped us reduce build time drastically. The components feel production ready and consistent across the product.</span>", image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200", name: "<span>Alex Turner</span>", company: "<span>Vercel</span>" },
-            { id: 9, description: "<span>We shipped our MVP weeks earlier than planned. PrebuiltUI removed a huge amount of repetitive UI work.</span>", image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200", name: "<span>Harry Peter</span>", company: "<span>Amazon</span>" }
-        ];
-
-        const columns = [
-            { start: 0, end: 3, className: "animate-scroll-up-1" },
-            { start: 3, end: 6, className: "hidden md:block animate-scroll-up-2 space-y-4" },
-            { start: 6, end: 9, className: "hidden lg:block animate-scroll-up-3 space-y-4" }
-        ];
-
-        function renderCard(testimonial, index, colIndex) {
-            return `
-            <div key="col${colIndex}-${testimonial.id}-${index}" class="bg-cp_background_paper border border-cp_borders_main rounded-xl p-6 mb-4 hover:border-cp_palette_primary/50 transition-all duration-300">
-                <div class="mb-5">
-                    <!-- Quote Icon Placeholder -->
-        <img src="https://placehold.co/21x15/1E3A8A/FFFFFF?text=%22" 
-             alt="quote" 
-             class="w-5 h-4 object-contain opacity-50 grayscale brightness-125" />
-                </div>
-                <p class="text-sm text-cp_text_secondary mb-5 leading-relaxed">
-                    ${testimonial.description}
-                </p>
-                <div class="flex items-center gap-3">
-                    <img src="${testimonial.image}" alt="${testimonial.name}" class="size-9 rounded-full border border-cp_borders_main object-cover" />
-                    <div>
-                        <p class="text-sm text-cp_text_primary font-medium">${testimonial.name}</p>
-                        <p class="text-sm text-cp_text_secondary opacity-70">${testimonial.company}</p>
-                    </div>
-                </div>
-            </div>
-        `;
-        }
-
-        const columnsContainer = document.getElementById('columns-container');
-
-        columns.forEach((col, colIndex) => {
-            const columnDiv = document.createElement('div');
-            columnDiv.className = `flex flex-col ${col.className}`;
-
-            // مضاعفة المصفوفة لضمان استمرارية الحركة اللانهائية
-            const columnTestimonials = [...testimonials.slice(col.start, col.end), ...testimonials.slice(col.start, col.end)];
-            columnDiv.innerHTML = columnTestimonials.map((testimonial, index) =>
-                renderCard(testimonial, index, colIndex)
-            ).join('');
-
-            columnsContainer.appendChild(columnDiv);
-        });
 
         const { animate } = anime;
+        // تأكد أن الكود بالكامل داخل DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const testimonials = [
+                { id: 1, description: "<span>PrebuiltUI helped us reduce build time drastically. The components feel production ready and consistent across the product.</span>", image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200", name: "<span>Alex Turner</span>", company: "<span>Vercel</span>" },
+                { id: 2, description: "<span>We shipped our MVP weeks earlier than planned. PrebuiltUI removed a huge amount of repetitive UI work.</span>", image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200", name: "<span>Harry Peter</span>", company: "<span>Amazon</span>" },
+                { id: 3, description: "<span>PrebuiltUI strikes the right balance between flexibility and consistency. It feels like a system built by real product teams.</span>", image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60", name: "<span>Jason Kim</span>", company: "<span>Flipkart</span>" },
+                { id: 4, description: "<span>The component structure and tokens system make scaling design incredibly easy. Highly recommended.</span>", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&h=100&auto=format&fit=crop", name: "<span>Sofia Martinez</span>", company: "<span>Linear</span>" },
+                { id: 5, description: "<span>PrebuiltUI allows me to focus on building features instead of fighting CSS. Everything looks premium right out of the box.</span>", image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60", name: "<span>Alex Johnson</span>", company: "<span>Microsoft</span>" },
+                { id: 6, description: "<span>If you're using Tailwind CSS, PrebuiltUI is a must have. It dramatically speeds up development while keeping the UI clean.</span>", image: "https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=200", name: "<span>Emily Karter</span>", company: "<span>Stripe</span>" },
+                { id: 7, description: "<span>PrebuiltUI strikes the right balance between flexibility and consistency. It feels like a system built by real product teams.</span>", image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/userImage/userImage1.png", name: "<span>Christofer Levin</span>", company: "<span>Deloitte</span>" },
+                { id: 8, description: "<span>PrebuiltUI helped us reduce build time drastically. The components feel production ready and consistent across the product.</span>", image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200", name: "<span>Alex Turner</span>", company: "<span>Vercel</span>" },
+                { id: 9, description: "<span>We shipped our MVP weeks earlier than planned. PrebuiltUI removed a huge amount of repetitive UI work.</span>", image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200", name: "<span>Harry Peter</span>", company: "<span>Amazon</span>" }
+            ];
+
+            const columnsConfig = [
+                { start: 0, end: 3, duration: 25000, mobile: true },
+                { start: 3, end: 6, duration: 30000, mobile: false, tablet: true },
+                { start: 6, end: 9, duration: 20000, mobile: false, desktop: true }
+            ];
+
+            function renderCard(testimonial, index, colIndex) {
+                return `
+        <div class="bg-cp_background_paper border border-cp_borders_main rounded-xl p-6 mb-4 hover:border-cp_palette_primary/50 transition-all duration-300">
+            <div class="mb-5">
+                <img src="https://placehold.co/21x15/1E3A8A/FFFFFF?text=%22" alt="quote" class="w-5 h-4 object-contain opacity-50 grayscale brightness-125" />
+            </div>
+            <p class="text-sm text-cp_text_secondary mb-5 leading-relaxed">${testimonial.description}</p>
+            <div class="flex items-center gap-3">
+                <img src="${testimonial.image}" alt="${testimonial.name}" class="size-9 rounded-full border border-cp_borders_main object-cover" />
+                <div>
+                    <p class="text-sm text-cp_text_primary font-medium">${testimonial.name}</p>
+                    <p class="text-sm text-cp_text_secondary opacity-70">${testimonial.company}</p>
+                </div>
+            </div>
+        </div>`;
+            }
+
+            const columnsContainer = document.getElementById('columns-container');
+
+            columnsConfig.forEach((col, colIndex) => {
+                const columnDiv = document.createElement('div');
+
+                let responsiveClasses = "flex flex-col ";
+                if (!col.mobile) responsiveClasses += "hidden ";
+                if (col.tablet) responsiveClasses += "md:flex ";
+                if (col.desktop) responsiveClasses += "lg:flex ";
+
+                columnDiv.className = responsiveClasses;
+                // مضاعفة المحتوى 3 مرات لضمان عدم وجود أي فجوات (Gaps) أثناء الحركة الطويلة
+                const doubledContent = [...testimonials.slice(col.start, col.end), ...testimonials.slice(col.start, col.end), ...testimonials.slice(col.start, col.end)];
+
+                columnDiv.innerHTML = doubledContent.map((t, i) => renderCard(t, i, colIndex)).join('');
+                columnsContainer.appendChild(columnDiv);
+
+                // تشغيل الأنميشن باستخدام anime مباشرة
+                animate(columnDiv, {
+                    translateY: ['0%', '-50%'],
+                    duration: col.duration,
+                    easing: 'linear',
+                    loop: true ,
+                    alternate:true
+                });
+            });
+        });
+
 
         /**
          * دالة لربط الأنميشن بالسكرول (رايح جاي)
@@ -499,46 +485,46 @@
 
         // testmonials-cta
         // 1. أنميشن الحاوية المتدرجة (ظهور ناعم مع تمدد)
-createScrollAnimation('#testimonials-cta', {
-    targets: '#testimonials-cta .max-w-5xl',
-    scale: [0.98, 1],
-    opacity: [0, 1],
-    easing: 'easeOutExpo',
-    duration: 1200
-});
+        createScrollAnimation('#testimonials-cta', {
+            targets: '#testimonials-cta .max-w-5xl',
+            scale: [0.98, 1],
+            opacity: [0, 1],
+            easing: 'easeOutExpo',
+            duration: 1200
+        });
 
-// 2. أنميشن المحتوى النصي (دخول من اليسار)
-createScrollAnimation('#testimonials-cta', {
-    targets: '#testimonials-cta h1, #testimonials-cta p, #testimonials-cta button',
-    translateX: [-30, 0],
-    opacity: [0, 1],
-    delay: anime.stagger(150, {start: 400}),
-    easing: 'easeOutCubic',
-    duration: 800
-});
+        // 2. أنميشن المحتوى النصي (دخول من اليسار)
+        createScrollAnimation('#testimonials-cta', {
+            targets: '#testimonials-cta h1, #testimonials-cta p, #testimonials-cta button',
+            translateX: [-30, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(150, { start: 400 }),
+            easing: 'easeOutCubic',
+            duration: 800
+        });
 
-// 3. أنميشن صورة الفريق (تأثير الـ Slide-in الاحترافي)
-createScrollAnimation('#testimonials-cta', {
-    targets: '#testimonials-cta img',
-    // الصورة تدخل من اليمين وبزاوية ميل خفيفة لتعزيز العمق
-    translateX: [50, 0],
-    translateY: [20, 0],
-    scale: [1.1, 1], 
-    opacity: [0, 1],
-    delay: 600,
-    easing: 'easeOutQuart',
-    duration: 1000
-});
+        // 3. أنميشن صورة الفريق (تأثير الـ Slide-in الاحترافي)
+        createScrollAnimation('#testimonials-cta', {
+            targets: '#testimonials-cta img',
+            // الصورة تدخل من اليمين وبزاوية ميل خفيفة لتعزيز العمق
+            translateX: [50, 0],
+            translateY: [20, 0],
+            scale: [1.1, 1],
+            opacity: [0, 1],
+            delay: 600,
+            easing: 'easeOutQuart',
+            duration: 1000
+        });
 
-// 4. أنميشن الـ Decorative Glow (نبض خفيف في الخلفية)
-createScrollAnimation('#testimonials-cta', {
-    targets: '#testimonials-cta .absolute.blur-3xl',
-    scale: [0.5, 1.2],
-    opacity: [0, 0.3],
-    delay: 800,
-    easing: 'easeOutSine',
-    duration: 1500
-});
+        // 4. أنميشن الـ Decorative Glow (نبض خفيف في الخلفية)
+        createScrollAnimation('#testimonials-cta', {
+            targets: '#testimonials-cta .absolute.blur-3xl',
+            scale: [0.5, 1.2],
+            opacity: [0, 0.3],
+            delay: 800,
+            easing: 'easeOutSine',
+            duration: 1500
+        });
     </script>
 
 </body>

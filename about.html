@@ -204,7 +204,7 @@
 
     <!-- CONTENT -->
     <main>
-        <section id="hero-section" class="container px-6 py-16 mx-auto text-center bg-cp_background_default">
+        <section id="hero-section" class="px-6 py-16 mx-auto text-center bg-cp_background_default">
             <div class="content max-w-lg mx-auto">
 
                 <!-- Main Title -->
@@ -620,15 +620,15 @@
                 <div class="flex mt-4 sm:mt-0 space-x-3">
 
                     <a href="#">
-                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=FB" alt="social icon">
+                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=FB" alt="social icon" class="w-6 h-6">
                     </a>
 
                     <a href="#">
-                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=TW" alt="social icon">
+                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=TW" alt="social icon" class="w-6 h-6">
                     </a>
 
                     <a href="#">
-                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=LN" alt="social icon">
+                        <img src="https://placehold.co/24x24/1E3A8A/FFFFFF?text=LN" alt="social icon" class="w-6 h-6">
                     </a>
 
                 </div>
@@ -666,7 +666,7 @@
          * @param {string} sectionSelector - السيكشن المستهدف
          * @param {Object} animationSettings - إعدادات أنميشن Anime.js
          */
-        const createScrollAnimation = (sectionSelector, animationSettings, isHero = false , splits = 8) => {
+        const createScrollAnimation = (sectionSelector, animationSettings, isHero = false, splits = 8) => {
             const section = document.querySelector(sectionSelector);
             if (!section) return;
 
@@ -819,7 +819,7 @@
 
             easing: 'easeOutQuad',
             duration: 800
-        },false , 2);
+        }, false, 2);
 
         // 2. أنميشن الأرقام (تأثير نبض خفيف عند الظهور)
         createScrollAnimation('#stat-section', {
